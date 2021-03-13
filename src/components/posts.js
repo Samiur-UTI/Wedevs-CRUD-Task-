@@ -1,7 +1,9 @@
 import {useState} from 'react';
 import Post from './post';
 import Modal from 'react-modal';
-import FormCreate from './form';
+import FormCreate from './modals/createForm';
+
+Modal.setAppElement('#root');
 const Posts = () => {
     const [post,setPost] = useState([
         {author: 'Samiur', title:'First Post', body:'Lorem Ipsum....', id:1, category:'Sports'},
