@@ -15,13 +15,9 @@ export default function Dropdown(props) {
                 onChange={handleInputChange}
                 label="Category"
             >
-                    {/* <MenuItem value=""><em>None</em></MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem> */}
                     <MenuItem>Create New category</MenuItem>
                     {post.map( p => 
-                         <MenuItem value={p.category}>{p.category}</MenuItem>)  }
+                         <MenuItem key={p.id} value={p.category}>{p.category}</MenuItem>)  }
             </Select>
         </FormControl>
         
