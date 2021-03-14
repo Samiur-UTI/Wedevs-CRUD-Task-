@@ -1,6 +1,7 @@
 import { Grid, TextField} from '@material-ui/core';
+import Dropdown from "../control/select";
 export default function Input (props){
-    const {values, handleInputChange} = props;
+    const {values, handleInputChange, post} = props;
     return(
         <Grid container>
             <Grid item xs={8} sm={6} md={4}>
@@ -18,6 +19,7 @@ export default function Input (props){
                 <TextField autoComplete='off' label="id" name='id' onChange={handleInputChange} variant="outlined" value={values.id}/>
             </Grid>
             <Grid item xs={8} sm={6} md={4}>
+                <Dropdown post={post} handleInputChange={handleInputChange}/>
             </Grid>
         </Grid>
     );

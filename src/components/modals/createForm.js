@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useForm} from '../form';
 import Input from "../control/input";
-import Dropdown from "../control/select";
+
 const initialVal = {
   id:0,
   author:'',
@@ -16,8 +16,7 @@ const FormCreate = (props) => {
     const {post} = props;
     return(
       <div className='ui form'>
-          <Input values={values} handleInputChange={handleInputChange}/>
-          <Dropdown post={post} handleInputChange={handleInputChange} />
+          <Input post={post} values={values} handleInputChange={handleInputChange}/>
       </div>
      );
 }
