@@ -16,7 +16,7 @@ const Posts = () => {
      const newPost = post.filter(p => p.id !== id);
      setPost(newPost);
     }
-    
+
     return(
        <div className='ui content'>
             <Post posts={post} handleDelete={handleDelete}/>
