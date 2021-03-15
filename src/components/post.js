@@ -13,13 +13,13 @@ const Post = ({posts, handleDelete}) => {
                         <p key={post.id}>{post.category}</p>
                     </div>
                     <div className='three wide column'>
-                         <button key={post.id} className='ui inverted violet button' onClick={() => handleRead(post.body)}>Read Post</button>
+                        <button key={post.id} className='ui inverted violet button' onClick={() => handleRead(post.body)}>Read Post</button>
                     </div>
                     <div className='three wide column'>
-                         <button key={post.id} className='ui inverted olive button' onClick={() => handleUpdate(post.body)}>Update Post</button>
+                        <button key={post.id} className='ui inverted olive button' onClick={() => handleUpdate(post.body)}>Update Post</button>
                     </div>
                     <div className='three wide column'>
-                         <button key={post.id} className='ui inverted red button' onClick={() => handleDelete(post.id)}>Delete Post</button>
+                        <button key={post.id} className='ui inverted red button' onClick={() => handleDelete(post.id)}>Delete Post</button>
                     </div>
                 </div>
             ))}
