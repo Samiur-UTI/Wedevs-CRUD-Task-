@@ -1,3 +1,4 @@
+import Category from "./category";
 
 const Post = ({posts, handleDelete}) => {
     const handleRead = (body) => console.log(body); 
@@ -10,7 +11,7 @@ const Post = ({posts, handleDelete}) => {
                         <h1 key={post.id}>{post.title}</h1>
                     </div>
                     <div className='three wide column'>
-                        <p key={post.id}>{post.category}</p>
+                        <Category post={post}/>
                     </div>
                     <div className='three wide column'>
                         <button key={post.id} className='ui inverted violet button' onClick={() => handleRead(post.body)}>Read Post</button>
