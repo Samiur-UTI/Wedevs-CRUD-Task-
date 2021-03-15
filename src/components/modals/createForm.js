@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {TextField,Grid,Select} from '@material-ui/core';
+import {TextField,Grid,FormControl,Button, MenuItem} from '@material-ui/core';
 import {useForm, Controller} from 'react-hook-form';
 const initialVal = {
   id:0,
@@ -10,7 +10,9 @@ const initialVal = {
   isPermanent: false
 }
 const FormCreate = (props) => {
-    const {handleSubmit, control, register} = useForm();
+    const {handleSubmit, control} = useForm();
+    const onSubmit = data => console.log(data);
+    const {post} = props;
     // const validate = () =>{
     //   const temp = {};
     //   temp.author = values.author ? '' : 'Author Name Cannot be empty';
@@ -20,19 +22,47 @@ const FormCreate = (props) => {
     //const {values, setvalue, handleInputChange}  = useForm(initialVal);
     // {post} = props;
     return(
-      <div className='ui form'>
-          <form onSubmit={handleSubmit(data => console.log(data))}>
-            <Controller as={TextField} name="Author" control={control} defaultValue="" ref={register()} label='Author' type='text'/>
-            <Controller as={TextField} name="Title" control={control} defaultValue="" ref={register()} label='Title' type='text'/>
-            <Controller as={TextField} name="Body" control={control} defaultValue="" ref={register()} label='Body' type='text'/>
-            <Controller as={TextField} name="Id" control={control} defaultValue="" ref={register()} label='id' type='number' />
-            <select className="ui dropdown">
-              <option value="">Gender</option>
-              <option value="1">Male</option>
-              <option value="0">Female</option>
-            </select>
-          </form>
-      </div>
+      <Grid container>
+         <form onSubmit={handleSubmit(onSubmit)}>
+            <FormControl>
+                <Controller
+                  name="name"
+                  as={<TextField id="name" variant='outlined' label="Name" />}
+                  control={control}
+                />
+                <Controller
+                  name="title"
+                  as={<TextField id='title' variant='outlined' label="Title" />}
+                  control={control}
+                />
+                <Controller
+                  name="body"
+                  as={<TextField id="body" variant='outlined' label="body" />}
+                  control={control}
+                />
+                <Controller
+                  name="id"
+                  as={<TextField id="id" variant='outlined' label="id" type='number' />}
+                  control={control}
+                />
+                <Controller
+                  name="gender"
+                  as={
+                    <TextField id="gender" label="Category" select>
+                      {post.map((option) => (
+                        <MenuItem key={option.id} value={option.category}>
+                          {option.category}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  }
+                  control={control}
+                />
+
+              <Button variant='outlined' color='primary' type="submit">Submit</Button>
+            </FormControl>
+        </form>
+      </Grid>
      );
 }
 export default FormCreate;
