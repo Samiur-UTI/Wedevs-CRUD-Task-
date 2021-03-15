@@ -19,7 +19,7 @@ const Posts = () => {
             <div className='ui container'>
                 <button onClick={() => setcreatePost(true)} className='ui inverted blue button'>Create New Post</button>
                 <Modal isOpen={createPost} onRequestClose={() => setcreatePost(false)}>
-                    <FormCreate post={post}/>
+                    <FormCreate post={post} setPost={setPost}/>
                 </Modal>
             </div>
         </div>
