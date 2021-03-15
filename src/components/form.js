@@ -18,3 +18,11 @@ export function useForm(initialVal){
     
     
 }
+export function Form(props) {
+  const {children,...other} = props;
+  return (
+    <form autoComplete='off' {...other}>
+        {props.children}
+    </form>
+  )
+}

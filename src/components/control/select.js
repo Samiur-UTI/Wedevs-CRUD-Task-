@@ -3,7 +3,6 @@ import {FormControl, InputLabel, Select,MenuItem} from '@material-ui/core';
 
 export default function Dropdown(props) {
     const {post,handleInputChange} = props;
-    console.log(post);
     return (
     
         <FormControl variant="outlined">
