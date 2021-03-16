@@ -1,12 +1,29 @@
 import React from 'react';
-import {Grid} from '@material-ui/core';
 import Form from '../form';
-const FormCreate = (props) => {
-    const {post, setPost} = props;
+import {TextField,FormControl,Button, Grid} from '@material-ui/core';
+import {useForm, Controller} from 'react-hook-form';
+
+export const FormCreateBook = (props) => {
+    const {post, setPost,category} = props;
     return(
       <Grid container>
-        <Form post={post} setPost={setPost}/>
+        <Form post={post} setPost={setPost} category={category}/>
       </Grid>
      );
 }
-export default FormCreate;
+export const FormCreateCategory = ({category,setCategory}) => {
+  const {handleSubmit, control} = useForm();
+  const onSubmit = data => setCategory([...category,data.category]);
+  return(
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <FormControl>
+          <Controller
+            name="category"
+            as={<TextField id="name" variant='outlined' label="Name" />}
+            control={control}
+          />
+      </FormControl>
+      <Button variant='outlined' color='primary' type="submit">Submit</Button>
+    </form>
+  )    
+}

@@ -2,9 +2,10 @@ import {TextField,FormControl,Button, MenuItem} from '@material-ui/core';
 import {useForm, Controller} from 'react-hook-form';
 
 export default function Form(props) {
-  const {post, setPost} = props;
+  const {post, setPost, category} = props;
   const {handleSubmit, control} = useForm();
   const onSubmit = data => setPost([...post,data]);
+  console.log(category);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl>
@@ -32,9 +33,9 @@ export default function Form(props) {
                   name="category"
                   as={
                     <TextField id="category" label="Category" select>
-                      {post.map((option) => (
-                        <MenuItem key={option.id} value={option.category}>
-                          {option.category}
+                      {category.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
                         </MenuItem>
                       ))}
                     </TextField>

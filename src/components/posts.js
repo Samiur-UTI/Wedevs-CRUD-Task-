@@ -1,14 +1,15 @@
 import {useState} from 'react';
 import Post from './post';
 import Modal from 'react-modal';
-import FormCreate from './modals/createForm';
-import {storageBook} from '../services/storage';
+import {storageBook, storageCategory} from '../services/storage';
+import {FormCreateBook, FormCreateCategory} from './modals/createForm';
 
 Modal.setAppElement('#root');
 const Posts = () => {
     const [post,setPost] = useState(storageBook());
     const [createPost, setcreatePost] = useState(false);
-    const [updatePost, setupdatePost] = useState(false);
+    const [category, setCategory] = useState(storageCategory(post));
+    const [createCategory, setcreateCategory] = useState(false);
     const handleDelete = (id) => {
      const newPost = post.filter(p => p.id !== id);
      setPost(newPost);
@@ -19,11 +20,11 @@ const Posts = () => {
             <div className='ui container'>
                 <button onClick={() => setcreatePost(true)} className='ui inverted blue button'>Create New Post</button>
                 <Modal isOpen={createPost} onRequestClose = {() => setcreatePost(false)}>
-                    <FormCreate post={post} setPost={setPost}/>
+                    <FormCreateBook category={category} post={post} setPost={setPost}/>
                 </Modal>
-                <button onClick={()=> setupdatePost(true)} className='ui inverted green button'>Create New Category</button>
-                <Modal isOpen={updatePost} onRequestClose = {() => setupdatePost(false)}>
-                    <div>Sama</div>
+                <button onClick={()=> setcreateCategory(true)} className='ui inverted green button'>Create New Category</button>
+                <Modal isOpen={createCategory} onRequestClose = {() => setcreateCategory(false)}>
+                    <FormCreateCategory category={category} setCategory={setCategory}/>
                 </Modal>
             </div>
         </div>
