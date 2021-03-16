@@ -1,6 +1,6 @@
 import Category from "./category";
 
-const Post = ({posts, handleDelete}) => {
+const Post = ({posts, handleDelete,category}) => {
     const handleRead = (body) => console.log(body); 
     const handleUpdate = (id) => console.log(id);  
     return(
@@ -11,7 +11,7 @@ const Post = ({posts, handleDelete}) => {
                         <h1 key={post.id}>{post.title}</h1>
                     </div>
                     <div className='three wide column'>
-                        <Category post={post}/>
+                        <Category category={category} post={post}/>
                     </div>
                     <div className='three wide column'>
                         <button key={post.id} className='ui inverted violet button' onClick={() => handleRead(post.body)}>Read Post</button>

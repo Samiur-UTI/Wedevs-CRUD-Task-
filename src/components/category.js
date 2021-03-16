@@ -1,10 +1,10 @@
 import React from 'react'
 import {List, ListItemText} from '@material-ui/core';
 
-export default function Category({post}) {
+export default function Category({category}) {
     return (
         <List component="nav" aria-label="main mailbox folders">
-                    {post.category.map(element =>   <ListItemText primary={element} /> )}
+                    {category.map(element =>   <ListItemText primary={element} /> )}
         </List>
     )
 }
