@@ -11,7 +11,7 @@ const Post = ({posts, handleDelete,category}) => {
                         <h1 key={post.id}>{post.title}</h1>
                     </div>
                     <div className='three wide column'>
-                        <Category category={category} post={post}/>
+                        <Category post={post}/>
                     </div>
                     <div className='three wide column'>
                         <button key={post.id} className='ui inverted violet button' onClick={() => handleRead(post.body)}>Read Post</button>

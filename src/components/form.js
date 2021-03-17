@@ -4,14 +4,19 @@ import {useForm, Controller} from 'react-hook-form';
 export default function Form(props) {
   const {post, setPost, category} = props;
   const {handleSubmit, control} = useForm();
-  const onSubmit = data => setPost([...post,data]);
-  console.log(category);
+  const onSubmit = data => setPost([...post,processedData(data)]);
+  function processedData(data){
+    let temp = [];
+    temp.push(data.category);
+    data.category = temp;
+    return data;
+  }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl>
                 <Controller
-                  name="name"
-                  as={<TextField id="name" variant='outlined' label="Name" />}
+                  name='author'
+                  as={<TextField id="name" variant='outlined' label="Author" />}
                   control={control}
                 />
                 <Controller

@@ -8,7 +8,7 @@ Modal.setAppElement('#root');
 const Posts = () => {
     const [post,setPost] = useState(storageBook());
     const [createPost, setcreatePost] = useState(false);
-    const [category, setCategory] = useState(storageCategory(post));
+    const [category, setCategory] = useState(storageCategory());
     const [createCategory, setcreateCategory] = useState(false);
     const handleDelete = (id) => {
      const newPost = post.filter(p => p.id !== id);

@@ -8,11 +8,14 @@ export function storageBook() {
         ]
     )
 }
-export function storageCategory(books){
-    let arrcat = [];
-    books.forEach(element => {
-        arrcat.push(element.category);
-        })
-    let allCat = new Set(arrcat.flat(1));
-    return [...allCat]
+export function storageCategory(){
+    // let arrcat = [];
+    // books.forEach(element => {
+    //     arrcat.push(element.category);
+    //     })
+    // let allCat = new Set(arrcat.flat(1));
+    // return [...allCat]
+    return (
+        ['News', 'Philosophy','Politics', 'Science']
+    )
 }
