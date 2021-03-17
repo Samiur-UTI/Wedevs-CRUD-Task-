@@ -50,6 +50,6 @@ export default function Form(props) {
 
               <Button variant='outlined' color='primary' type="submit">Submit</Button>
             </FormControl>
-        </form>
+    </form>
   )
 }
