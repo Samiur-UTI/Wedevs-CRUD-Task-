@@ -3,13 +3,13 @@ import Post from './components/post';
 import Modal from 'react-modal';
 import {storageBook, storageCategory} from './services/storage';
 import {FormCreateBook, FormCreateCategory} from './components/modals/createForm';
+import { Link,Route, Switch } from 'react-router-dom';
 
 Modal.setAppElement('#root');
 const Posts = () => {
     const [post,setPost] = useState(storageBook());
     const [createPost, setcreatePost] = useState(false);
     const [category, setCategory] = useState(storageCategory());
-    const [createCategory, setcreateCategory] = useState(false);
     const handleDelete = (id) => {
      const newPost = post.filter(p => p.id !== id);
      setPost(newPost);
@@ -22,10 +22,12 @@ const Posts = () => {
                 <Modal isOpen={createPost} onRequestClose = {() => setcreatePost(false)}>
                     <FormCreateBook category={category} post={post} setPost={setPost}/>
                 </Modal>
-                <button onClick={()=> setcreateCategory(true)} className='ui inverted green button'>Create New Category</button>
-                <Modal isOpen={createCategory} onRequestClose = {() => setcreateCategory(false)}>
-                    <FormCreateCategory category={category} setCategory={setCategory}/>
-                </Modal>
+                <Link to='/createcat'><button className='ui inverted green button'>Create New Category</button></Link>
+                <div>
+                    <Switch>
+                        <Route exact path='/createcat' render={(props) => <FormCreateCategory category={category} setCategory={setCategory}/>}/>
+                    </Switch>
+                </div>
             </div>
         </div>
     )
