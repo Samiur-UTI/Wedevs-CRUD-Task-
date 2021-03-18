@@ -16,7 +16,7 @@ const Posts = () => {
     }
     return(
        <div className='ui content ui container'>
-            <Post category={category} posts={post} handleDelete={handleDelete}/>
+            <Post setPost={setPost} setCategory={setCategory} category={category} posts={post} handleDelete={handleDelete}/>
             <div className='ui container'>
                 <button onClick={() => setcreatePost(true)} className='ui inverted blue button'>Create New Post</button>
                 <Modal isOpen={createPost} onRequestClose = {() => setcreatePost(false)}>

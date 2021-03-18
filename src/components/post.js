@@ -1,9 +1,9 @@
 import Category from "./category";
 import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom';
 import ReadBook from './modals/readBook';
+import UpdateBook from '../components/modals/updateForm';
 
-const Post = ({posts, handleDelete,category}) => {
-    const handleUpdate = (id) => console.log(id);  
+const Post = ({posts, setPost, handleDelete,category,setCategory}) => { 
     return(
         <Router>
             <div className='ui segment'>
@@ -19,15 +19,15 @@ const Post = ({posts, handleDelete,category}) => {
                            <Link to={`/read/${post.id}`}><button className='ui inverted green button'>Read book</button></Link>
                         </div>
                         <div className='three wide column'>
-                            <button key={post.id} className='ui inverted olive button' onClick={() => handleUpdate(post.body)}>Update Post</button>
+                            <Link to={`/update/${post.id}`}><button className='ui inverted olive button'>Update book</button></Link>
                         </div>
                         <div className='three wide column'>
                             <button key={post.id} className='ui inverted red button' onClick={() => handleDelete(post.id)}>Delete Post</button>
                         </div>
                         <div>
                             <Switch>
-                                <Route exact path='/read/:id' render={(props) => <ReadBook {...props} post={post}/> }></Route>
-                                <Route></Route>
+                                <Route exact path='/read/:id' render={(props) => <ReadBook {...props} post={posts}/> }></Route>
+                                <Route exact path='/update/:id' render={(props) => <UpdateBook {...props} post={posts} category={category} setPost={setPost} setCategory={setCategory}/>}></Route>
                             </Switch>
                         </div>
                     </div>

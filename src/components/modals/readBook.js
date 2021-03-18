@@ -1,10 +1,14 @@
 import {useState,React} from 'react';
 import {storageBook} from '../../services/storage';
 import Modal from 'react-modal';
-import {useHistory} from 'react-router-dom';
+import {useHistory,useParams} from 'react-router-dom';
 import {makeStyles,Card, CardContent, Typography} from '@material-ui/core';
+import {findByIdAndRead} from '../control/helpers';
 
 export default function ReadBook({post}) {
+    const {id} = useParams();
+    const obj = findByIdAndRead(post,id);
+    console.log(obj)
     const history = useHistory();
     const [openBook, setopenBook] = useState(true);
     const useStyles = makeStyles({
@@ -30,20 +34,20 @@ export default function ReadBook({post}) {
                     <Card className={classes.root}>
                         <CardContent>
                             <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                A new Book By {post.author}
+                                A new Book By {obj.author}
                             </Typography>
                             <Typography variant="h5" component="h2">
-                                {post.title}
+                                {obj.title}
                             </Typography>
                             <Typography className={classes.pos} color="textSecondary">
-                                {post.category.map(item => <li>{item}</li>)}
+                                {obj.category.map(item => <li>{item}</li>)}
                             </Typography>
                             <Typography variant="body2" component="p">
-                                {post.body}
+                                {obj.body}
                             </Typography>
                         </CardContent>
                     </Card>
-                </Modal>    
+                </Modal>   
             </div>
         )
 }

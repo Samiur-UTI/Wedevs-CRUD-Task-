@@ -14,7 +14,6 @@ export const FormCreateBook = (props) => {
 export const FormCreateCategory = ({category,setCategory}) => {
   const {handleSubmit, control} = useForm();
   const onSubmit = data => setCategory([...category,data.category]);
-  console.log(category);
   return(
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormControl>
